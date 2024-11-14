@@ -513,6 +513,7 @@ h4{
         h3, .fa-instagram, .fa-facebook {
             font-size: 3em;         
         }
+        text-decoration: none;
     }
     .fa-whatsapp{
         font-size: 5em;
@@ -552,6 +553,7 @@ h4{
             flex-direction: column;
             margin-top: 20px;
             a{
+                text-decoration: none;
                 display: flex;
                 flex-direction: column;
                 justify-items: center;
