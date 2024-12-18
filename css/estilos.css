@@ -339,6 +339,20 @@ h4{
     transform: scale(1.05); /* Aumenta ligeramente el tamaño del botón */
 }
 
+#contadorCarrito {
+    background-color: gray;
+    color: white;
+    padding: 3px 6px;
+    border-radius: 50%;
+    font-size: 12px;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+#contadorCarrito.carritoLleno {
+    background-color: red; /* Cambiar color si hay productos */
+}
+
 /* Hacer que la tabla sea scrollable en pantallas pequeñas */
 @media (max-width: 768px) {
     .carritoCompras {

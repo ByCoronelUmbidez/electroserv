@@ -1,7 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
         const botonesAgregar = document.querySelectorAll(".botonAgregar");
+        const contadorCarrito = document.getElementById("contadorCarrito");
     console.log(botonesAgregar);
+    console.log(contadorCarrito);
     
+        // Función para actualizar el contador del carrito
+        const actualizarContadorCarrito = () => {
+            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+            const totalProductos = carrito.reduce((total, item) => total + item.cantidad, 0);
+            contadorCarrito.textContent = totalProductos;
+    
+            // Cambiar el color del contador si hay productos
+            if (totalProductos > 0) {
+                contadorCarrito.classList.add("carritoLleno");
+            } else {
+                contadorCarrito.classList.remove("carritoLleno");
+            }
+        };
+    
+        // Inicializar el contador al cargar la página
+        actualizarContadorCarrito();
     botonesAgregar.forEach(boton => {
         boton.addEventListener("click", (event) => {
             event.preventDefault();
