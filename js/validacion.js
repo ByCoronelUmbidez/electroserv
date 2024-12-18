@@ -9,11 +9,13 @@ formulario.addEventListener("submit", event => {
     const apellido = document.getElementById("apellido").value.trim();
     const email = document.getElementById("email").value.trim();
     const consulta = document.getElementById("consulta").value.trim();
+    const servicio = document.getElementById("servicio").value;
 
     console.log(nombre);
     console.log(apellido);
     console.log(email);
     console.log(consulta);
+    console.log(servicio);
 
     const errorNombre = document.getElementById("errorNombre"); 
     const errorApellido = document.getElementById("errorApellido"); 
@@ -52,14 +54,17 @@ formulario.addEventListener("submit", event => {
     }
 
     if (formularioValido) {
-        alert("Su consulta fue enviada correctamente y pronto nos pondremos en contacto.");
         const formularioContacto = {
             nombre: nombre,
             apellido: apellido,
             email: email,
-            consulta: consulta
+            consulta: consulta,
+            servicio: servicio
         };
-        location.reload();
 
+        console.log("Datos del formulario enviados:", formularioContacto);
+        alert("Su consulta fue enviada correctamente y pronto nos pondremos en contacto.");
+
+        formulario.reset();
     }
 });
