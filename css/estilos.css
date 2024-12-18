@@ -185,7 +185,7 @@ h4{
                 margin-bottom: 10px;
                 border-radius: 5px;
              }
-            .botonTarjeta {
+            .botonTarjeta, .botonAgregar {
                 display:inline-block;
                 margin-top:20px;
                 text-decoration: none;
@@ -271,11 +271,11 @@ h4{
     max-width: 800px;
     border-collapse: collapse;
     border: 1px solid #ddd;
-    background-color: #fff;
+    background-color: #287276;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.carritoCompras thead {
-    background-color: #007bff;
+.carritoCompras thead, tfoot {
+    background-color: #121d42;
     color: #fff;
 }
 .carritoCompras th, .carritoCompras td {
@@ -286,6 +286,10 @@ h4{
     font-weight: bold;
     text-transform: uppercase;
 }
+.carritoCompras a {
+    text-decoration: none; 
+    color: inherit; 
+}
 .carritoCompras input[type="number"] {
     width: 60px;
     padding: 5px;
@@ -294,45 +298,79 @@ h4{
     border-radius: 4px;
 }
 .carritoCompras tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-.carritoCompras tfoot {
-    font-weight: bold;
-    background-color: #f2f2f2;
-}
-.carritoCompras tfoot th {
-    padding: 15px;
-    color: #333;
+    background-color: #2b6164;
 }
 
-/* Media Query para pantallas menores a 768px - Carrito */
+.botonEliminar {
+    background-color: #dc3545; /* Color de fondo rojo */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    padding: 8px 16px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño de fuente */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor cuando se pasa por encima */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animaciones suaves */
+}
+
+.botonEliminar:hover {
+    background-color: #c82333; /* Color de fondo más oscuro al pasar el cursor */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño del botón */
+}
+
+.botonAgregarUno {
+    background-color: #28a745; /* Color verde */
+    color: #fff; /* Texto blanco */
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, border 0.2s ease;
+}
+
+.botonAgregarUno:hover {
+    background-color: #218838; /* Color verde más oscuro en hover */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño del botón */
+}
+
+/* Hacer que la tabla sea scrollable en pantallas pequeñas */
 @media (max-width: 768px) {
-    table, thead, tbody, th, td, tr {
+    .carritoCompras {
+        display: block;
+        width: 90%; /* Ancho más pequeño para pantallas pequeñas */
+        margin: 0 auto;
+    }
+
+    .carritoCompras thead {
+        display: none; /* Ocultar los encabezados de la tabla */
+    }
+
+    .carritoCompras tbody {
         display: block;
     }
-    thead {
-        display: none;
+
+    .carritoCompras tr {
+        display: block;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 10px;
     }
-    tr {
-        margin-bottom: 15px;
+
+    .carritoCompras td {
+        display: block;
+        text-align: center;
+        padding: 8px;
+        font-size: 14px;
     }
-    td {
-        display: flex;
-        align-items: center;
-        padding: 10px;
-        border: 1px solid #ddd;
-        position: relative;
-    }
-    .carritoCompras{
-        width: auto;
-    }
-    td::before {
-        content: attr(data-label); 
+
+    .carritoCompras td:before {
+        content: attr(data-label); /* Usar el atributo data-label para mostrar el nombre de cada columna */
         font-weight: bold;
-        width: 100px; 
-        flex-shrink: 0;
+        display: block;
         text-align: left;
-        margin-right: 10px;
+    }
+
+    .carritoCompras td:last-child {
+        border-bottom: none; /* Eliminar borde inferior en la última celda */
     }
 }
 
