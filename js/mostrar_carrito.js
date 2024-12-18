@@ -3,17 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalCarrito = document.getElementById("totalCarrito");
     const btnComprar = document.getElementById("comprarCarrito");
 
-    // Obtener carrito de localStorage
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-    // Función para formatear precios con separadores de miles y coma como decimal
     const formatearPrecio = (precio) => {
         return precio.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     };
 
-    // Función para renderizar el carrito
     const renderizarCarrito = () => {
-        // Limpiar tabla
         tablaCarrito.innerHTML = "";
 
         if (carrito.length === 0) {
@@ -22,10 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Renderizar productos en la tabla
         carrito.forEach((producto, index) => {
-            // Asegurarse de que el precio y la cantidad sean números válidos
-            let precio = parseFloat(producto.precio);  // Convertir a número flotante
+            let precio = parseFloat(producto.precio);  
             const cantidad = parseInt(producto.cantidad, 10);
 
             if (isNaN(precio) || isNaN(cantidad)) {
@@ -33,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            const totalProducto = (precio * cantidad); // Calcular el total por producto
+            const totalProducto = (precio * cantidad); 
 
             const fila = document.createElement("tr");
             fila.innerHTML = `
@@ -49,56 +43,46 @@ document.addEventListener("DOMContentLoaded", () => {
             tablaCarrito.appendChild(fila);
         });
 
-        // Actualizar el total general
         calcularTotal();
     };
 
     const calcularTotal = () => { 
-        // Declaración de la función calcularTotal como una función flecha.
         
         const total = carrito.reduce((suma, producto) => {
-            let precio = parseFloat(producto.precio);  // Convertir a número flotante
+            let precio = parseFloat(producto.precio);  
             const cantidad = parseInt(producto.cantidad, 10);
             
-            // Verificar que precio y cantidad son válidos
             if (isNaN(precio) || isNaN(cantidad)) {
                 return suma;
             }
             
-            return suma + (precio * cantidad); // Sumar el total del producto
+            return suma + (precio * cantidad); 
         }, 0);
     
-        totalCarrito.textContent = formatearPrecio(total); // Mostrar total con formato
+        totalCarrito.textContent = formatearPrecio(total); 
     };
     
 
-    // Event listener para agregar o eliminar productos
     tablaCarrito.addEventListener("click", (event) => {
         const index = event.target.getAttribute("data-index");
 
         if (index !== null && index >= 0 && index < carrito.length) {
             if (event.target.classList.contains("botonAgregarUno")) {
-                // Aumentar la cantidad del producto en 1
                 carrito[index].cantidad += 1;
             } else if (event.target.classList.contains("botonEliminar")) {
-                // Reducir la cantidad del producto en 1
                 if (carrito[index].cantidad > 1) {
                     carrito[index].cantidad -= 1;
                 } else {
-                    // Si la cantidad es 1, eliminamos el producto completamente
                     carrito.splice(index, 1);
                 }
             }
 
-            // Actualizamos el carrito en localStorage
             localStorage.setItem("carrito", JSON.stringify(carrito));
 
-            // Vuelve a renderizar el carrito para reflejar los cambios
             renderizarCarrito();
         }
     });
 
-    // Event listener para el botón "Comprar"
     comprarCarrito.addEventListener("click", (e) => {
         e.preventDefault();  // 
         if (carrito.length > 0) {
@@ -111,6 +95,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
     
-    // Renderizar carrito al cargar la página
     renderizarCarrito();
 });
