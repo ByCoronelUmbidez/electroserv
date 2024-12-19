@@ -62,6 +62,14 @@ document.addEventListener("DOMContentLoaded", () => {
         totalCarrito.textContent = formatearPrecio(total); 
     };
     
+    const actualizarContadorCarrito = () => {
+        const totalProductos = carrito.reduce((total, item) => total + item.cantidad, 0);
+        const contadores = document.querySelectorAll(".contadorCarrito"); // Selecciona por clase
+
+        contadores.forEach((contador) => {
+            contador.textContent = totalProductos;
+        });
+    };
 
     tablaCarrito.addEventListener("click", (event) => {
         const index = event.target.getAttribute("data-index");
@@ -80,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("carrito", JSON.stringify(carrito));
 
             renderizarCarrito();
+            actualizarContadorCarrito();
         }
     });
 
