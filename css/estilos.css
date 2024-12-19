@@ -306,7 +306,16 @@ h4{
 .carritoCompras tbody tr:nth-child(even) {
     background-color: #2b6164;
 }
+.carritoCompras tfoot tr {
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap; /* No se envuelve en pantallas grandes */
+}
 
+.carritoCompras tfoot th, 
+.carritoCompras tfoot a#comprarCarrito {
+    margin: 5px;
+}
 .botonEliminar {
     background-color: #dc3545; /* Color de fondo rojo */
     color: white; /* Texto blanco */
@@ -349,6 +358,33 @@ h4{
     display: inline-block;
 }
 
+/* Contenedor principal para la tasa de cambio */
+.tasaCambioContenedor {
+    background-color: #111315; /* Fondo azul claro */
+    padding: 10px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ccc; /* Borde gris */
+}
+
+/* Estilo para el título principal */
+#tasaCambioContenedor h2 {
+    font-family: 'Arial', sans-serif;
+    color: #79a3a3; /* Color del texto */
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Estilo para la tasa de cambio */
+#tasaCambio {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #a9baa6; /* Color verde para indicar buena tasa */
+    margin-top: 0;
+}
 
 /* Hacer que la tabla sea scrollable en pantallas pequeñas */
 @media (max-width: 768px) {
@@ -388,6 +424,22 @@ h4{
 
     .carritoCompras td:last-child {
         border-bottom: none; /* Eliminar borde inferior en la última celda */
+    }
+
+    .carritoCompras tfoot tr {
+        display: flex;
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+        justify-content: center; /* Centra los elementos */
+    }
+
+    .carritoCompras tfoot th {
+        width: 100%; /* El total ocupa una fila completa */
+        text-align: center;
+    }
+
+    .carritoCompras tfoot a#comprarCarrito {
+        width: 100%; /* Botón ocupa toda la fila */
+        text-align: center;
     }
 }
 
