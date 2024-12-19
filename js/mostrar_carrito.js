@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         carrito.forEach((producto, index) => {
-            let precio = parseFloat(producto.precio);  
+            let precio = parseFloat(producto.precio);
             const cantidad = parseInt(producto.cantidad, 10);
 
             if (isNaN(precio) || isNaN(cantidad)) {
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            const totalProducto = (precio * cantidad); 
+            const totalProducto = (precio * cantidad);
 
             const fila = document.createElement("tr");
             fila.innerHTML = `
@@ -46,22 +46,22 @@ document.addEventListener("DOMContentLoaded", () => {
         calcularTotal();
     };
 
-    const calcularTotal = () => { 
-        
+    const calcularTotal = () => {
+
         const total = carrito.reduce((suma, producto) => {
-            let precio = parseFloat(producto.precio);  
+            let precio = parseFloat(producto.precio);
             const cantidad = parseInt(producto.cantidad, 10);
-            
+
             if (isNaN(precio) || isNaN(cantidad)) {
                 return suma;
             }
-            
-            return suma + (precio * cantidad); 
+
+            return suma + (precio * cantidad);
         }, 0);
-    
-        totalCarrito.textContent = formatearPrecio(total); 
+
+        totalCarrito.textContent = formatearPrecio(total);
     };
-    
+
     const actualizarContadorCarrito = () => {
         const totalProductos = carrito.reduce((total, item) => total + item.cantidad, 0);
         const contadores = document.querySelectorAll(".contadorCarrito"); // Selecciona por clase
@@ -96,13 +96,13 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();  // 
         if (carrito.length > 0) {
             alert("¡Compra realizada con éxito!");
-            localStorage.removeItem("carrito"); 
-            renderizarCarrito();  
-            location.reload();  
+            localStorage.removeItem("carrito");
+            renderizarCarrito();
+            location.reload();
         } else {
             alert("El carrito está vacío.");
         }
     });
-    
+
     renderizarCarrito();
 });

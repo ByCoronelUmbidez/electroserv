@@ -17,8 +17,8 @@ formulario.addEventListener("submit", event => {
     console.log(consulta);
     console.log(servicio);
 
-    const errorNombre = document.getElementById("errorNombre"); 
-    const errorApellido = document.getElementById("errorApellido"); 
+    const errorNombre = document.getElementById("errorNombre");
+    const errorApellido = document.getElementById("errorApellido");
     const errorEmail = document.getElementById("errorEmail");
     const errorConsulta = document.getElementById("errorConsulta");
 
